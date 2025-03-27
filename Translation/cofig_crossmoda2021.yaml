@@ -1,0 +1,41 @@
+gpu:
+  device: 0  # GPU device ID. Use -1 to force CPU.
+  
+experiment_name:
+  crossMoDA2021
+  
+#image ranslation: i2i
+Translation:
+  num_samples: 50
+  img_size: 512
+  raw_data_path: "/data/hui/UDA/crossMoDA2021/crossmoda_training/"
+  
+  data:
+    train_path: 
+      source: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/source_imgs.npy"  # Path to the source domain training data
+      target: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/target_imgs.npy"  # Path to the target domain training data
+    val_path: 
+      source: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/source_imgs.npy"  # Path to the source domain validation data
+      target: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/target_imgs.npy"
+  
+  batch_size: 4                      # Batch size for training
+  num_workers: 4                     # Number of workers for DataLoader
+  visual_interval: 100               # Interval for visualizing GAN outputs
+
+
+  augmentation:
+    shift_limit: 0.1                   # Maximum pixel shift for augmentation
+    scale_limit: 0.1                   # Maximum scaling factor for augmentation
+    rotate_limit: 30                   # Maximum rotation angle (in degrees)
+    vertical_flip_prob: 0.5            # Probability of vertical flipping
+    horizontal_flip_prob: 0.5          # Probability of horizontal flipping
+    mean: 0.5                          # Mean for normalization
+    std: 0.5                           # Standard deviation for normalization
+    max_pixel_value: 1.0               # Maximum pixel value for normalization
+
+  model:
+    name: "i2i_exp"                  # Name of the experiment
+    seed: 42                           # Random seed for reproducibility
+    epochs: 100                        # Number of training epochs
+    save_path: "./checkpoints"         # Directory to save model checkpoints
+
