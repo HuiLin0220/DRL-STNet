@@ -26,23 +26,22 @@ If you find our work is useful in your research, please consider citing:
 ## Prepare data
 - The training data folder structure is like this:
 
-         Raw_data/Dataset_train_val/  
-          ├── imagesTr
-          │   ├── sten_0000_0000.png
-          │   ├── sten_0000_0001.png
+         FLARE/training/  
+          ├── source
+          │   ├── FLARE22_Tr_0001_0000.nii.gz
+          │   ├── FLARE22_Tr_0002_0000.nii.gz
           │   ├── ...
-          │   ├── sten_0001_0000.png      
-          │   ├── sten_0001_0001.png      
-          │   ├── ... 
-          │   ├── sten_0002_0000.png
-          │   ├── sten_0002_0001.png
+          ├── source_labels
+          │   ├── FLARE22_Tr_0001.nii.gz
+          │   ├── FLARE22_Tr_0002.nii.gz
           │   ├── ...
-          ├── labelsTr
-          │   ├── sten_0000.png
-          │   ├── sten_0001.png
-          │   ├── sten_0002.png
-          │   ├── ...
-          ├── dataset.json
+          ├── target
+          │   ├── amos_XXXX_0000.nii.gz
+          │   ├── amos_XXXX_0000.nii.gz
+	FLARE/validation/
+
+
+		
 ## Instructions
 
 stage 0 preparing data for training i2i model:
