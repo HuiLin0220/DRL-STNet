@@ -38,6 +38,7 @@ If you find our work is useful in your research, please consider citing:
           ├── target
           │   ├── amos_XXXX_0000.nii.gz
           │   ├── amos_XXXX_0000.nii.gz
+          │   ├── ...
 	FLARE/validation/
 
 
