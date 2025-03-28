@@ -65,7 +65,7 @@ def main():
     torch.backends.cudnn.enabled = True
     torch.backends.cudnn.benchmark = True
     check_manual_seed(cfg["Translation"]['model']['seed'])
-    create_dirs(cfg["Translation"]['model']['name'])
+    create_dirs(cfg["experiment_name"], cfg["Translation"]['model']['name'])
 
     # Set up device
     device = setup_device(cfg)
@@ -89,7 +89,7 @@ def main():
     )
 
     # Initialize solver
-    trainer = i2iSolver(cfg["Translation"]['model'])
+    trainer = i2iSolver(cfg)
     trainer.to(device)
     iteration = 0
 
