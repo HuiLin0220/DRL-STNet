@@ -15,8 +15,32 @@ If you find our work is useful in your research, please consider citing:
 }
 
 
+```
+## Dataset
 
+[To obtain the 2018 Atria Segmentation challenge dataset](https://www.cardiacatlas.org/atriaseg2018-challenge/atria-seg-data/)
 
+## Prepare data
+- The training data folder structure is like this:
+
+         Raw_data/Dataset_train_val/  
+          ├── imagesTr
+          │   ├── sten_0000_0000.png
+          │   ├── sten_0000_0001.png
+          │   ├── ...
+          │   ├── sten_0001_0000.png      
+          │   ├── sten_0001_0001.png      
+          │   ├── ... 
+          │   ├── sten_0002_0000.png
+          │   ├── sten_0002_0001.png
+          │   ├── ...
+          ├── labelsTr
+          │   ├── sten_0000.png
+          │   ├── sten_0001.png
+          │   ├── sten_0002.png
+          │   ├── ...
+          ├── dataset.json
+## Instructions
 
 stage 0 preparing data for training i2i model:
        
@@ -27,3 +51,5 @@ stage 1: train i2i model
 	python "/home/hln0895/DRL-STNet/stage1.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
 
 stage 2: generate fake target scans (MRI)
+## Contact Us
+Feel free to contact me at huilin2023@u.northwestern.edu
