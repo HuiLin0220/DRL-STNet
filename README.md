@@ -1,5 +1,5 @@
 # DRL-STNet: Unsupervised Domain Adaptation for Cross-modality Medical Image Segmentation via Disentangled Representation Learning
-[![paper](https://img.shields.io/badge/arXiv-2311.12437-blue)](https://arxiv.org/abs/2409.18340)
+[![paper](https://img.shields.io/badge/arXiv-2409.18340-blue)](https://arxiv.org/abs/2409.18340)
  [![cite](https://img.shields.io/badge/cite-BibTex-yellow)](https://scholar.googleusercontent.com/scholar.bib?q=info:_WTBYxMIx-IJ:scholar.google.com/&output=citation&scisdr=ClEVFUEBEJ750VrYKyA:AFWwaeYAAAAAZ-beMyBvhn9GPawRgNF6OIXYJOY&scisig=AFWwaeYAAAAAZ-beM5qZ-hFUtE2RQAeeiZ-cNo0&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1) 
 
 
