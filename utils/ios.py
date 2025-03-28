@@ -1,9 +1,9 @@
 import os
-def mkdir(r,n):
-    p=os.path.join(r,n)
+def mkdir(e, r, m, n):
+    p=os.path.join(e, r, m, n)
     if not os.path.isdir(p):
         os.makedirs(p)
 
-def create_dirs(name):
-    mkdir(name,'i2i_train_visual')
-    mkdir(name,'i2i_checkpoints')
+def create_dirs(exp_name, model_name):
+    mkdir(exp_name, "Translation", model_name, 'i2i_train_visual')
+    mkdir(exp_name, "Translation", model_name, 'i2i_checkpoints')
