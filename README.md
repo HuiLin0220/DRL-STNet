@@ -23,9 +23,9 @@ If you find our work is useful in your research, please consider citing:
 
 [To obtain the FLARE Challenge dataset](https://www.codabench.org/competitions/2296/)
 
-## Prepare data
-- The training data folder structure is like this:
-
+## Folder Structures
+- The input for stage 0:
+	
          FLARE/training/  
           ├── source
           │   ├── FLARE22_Tr_0001_0000.nii.gz
@@ -41,6 +41,16 @@ If you find our work is useful in your research, please consider citing:
           │   ├── ...
 	FLARE/validation/
 
+- After stage 0 and stage 1
+
+	FLARE/Translation/  
+          ├── i2i_exp
+          │   ├── i2i_checkpoints
+          │   ├── i2i_train_visual
+          ├── source_imgs.npy
+          │── target_imgs.npy
+          │── source_selected_files.txt
+          │── target_selected_files.txt
 
 		
 ## Instructions
