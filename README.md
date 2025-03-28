@@ -16,8 +16,6 @@ If you find our work is useful in your research, please consider citing:
   journal={arXiv preprint arXiv:2409.18340},
   year={2024}
 }
-
-
 ```
 ## Dataset
 
@@ -25,7 +23,7 @@ If you find our work is useful in your research, please consider citing:
 
 ## Folder Structures
 - The input for stage 0:
-	
+	```
          FLARE/training/  
           ├── source
           │   ├── FLARE22_Tr_0001_0000.nii.gz
@@ -40,9 +38,9 @@ If you find our work is useful in your research, please consider citing:
           │   ├── amos_XXXX_0000.nii.gz
           │   ├── ...
 	FLARE/validation/
-
+	```
 - After stage 0 and stage 1
-
+	```
 	FLARE/Translation/  
           ├── i2i_exp
           │   ├── i2i_checkpoints
@@ -51,7 +49,7 @@ If you find our work is useful in your research, please consider citing:
           │── target_imgs.npy
           │── source_selected_files.txt
           │── target_selected_files.txt
-
+	```
 		
 ## Instructions
 
