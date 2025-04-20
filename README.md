@@ -27,7 +27,7 @@ If you find our work is useful in your research, please consider citing:
 ## Folder Structures
 - The input for stage 0:
 	```
- 	FLARE/training/  
+ 	FLARE/  
           ├── source
           │   ├── FLARE22_Tr_0001_0000.nii.gz
           │   ├── FLARE22_Tr_0002_0000.nii.gz
@@ -40,7 +40,6 @@ If you find our work is useful in your research, please consider citing:
           │   ├── amos_XXXX_0000.nii.gz
           │   ├── amos_XXXX_0000.nii.gz
           │   ├── ...
-	FLARE/validation/
 	```
 - After stage 0 and stage 1
 	```
@@ -48,10 +47,16 @@ If you find our work is useful in your research, please consider citing:
           ├── i2i_exp
           │   ├── i2i_checkpoints
           │   ├── i2i_train_visual
-          ├── source_imgs.npy
-          │── target_imgs.npy
-          │── source_selected_files.txt
-          │── target_selected_files.txt
+	  ├── train
+          │   ├── source_imgs.npy
+          │   │── target_imgs.npy
+          │   │── source_selected_files.txt
+          │   │── target_selected_files.txt
+          ├── val
+          │   ├── source_imgs.npy
+          │   │── target_imgs.npy
+          │   │── source_selected_files.txt
+          │   │── target_selected_files.txt
 	```
 		
 ## Instructions
