@@ -47,7 +47,7 @@ If you find our work is useful in your research, please consider citing:
           ├── i2i_exp
           │   ├── i2i_checkpoints
           │   ├── i2i_train_visual
-	  ├── train
+          ├── train
           │   ├── source_imgs.npy
           │   │── target_imgs.npy
           │   │── source_selected_files.txt
