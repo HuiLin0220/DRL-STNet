@@ -20,6 +20,9 @@ If you find our work is useful in your research, please consider citing:
 ## Dataset
 
 [To obtain the FLARE Challenge dataset](https://www.codabench.org/competitions/2296/)
+## Shared weights
+
+
 
 ## Folder Structures
 - The input for stage 0:
@@ -62,5 +65,7 @@ stage 1: train i2i model
 python "/home/hln0895/DRL-STNet/stage1.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
 ```
 stage 2: generate fake target scans (MRI)
+
+
 ## Contact Us
 Feel free to contact me at huilin2023@u.northwestern.edu
