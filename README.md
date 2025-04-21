@@ -65,9 +65,9 @@ If you find our work is useful in your research, please consider citing:
           │   ├── FLARE22_Tr_0001_0000.nii.gz
           │   ├── FLARE22_Tr_0002_0000.nii.gz
           │   ├── ...
- 	  ├── i2i_exp
-  	  ├── train
-  	  ├── val
+          ├── i2i_exp
+          ├── train
+          ├── val
 		
 ## Instructions
 
