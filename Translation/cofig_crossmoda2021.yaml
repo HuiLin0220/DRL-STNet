@@ -6,17 +6,23 @@ experiment_name:
   
 #image ranslation: i2i
 Translation:
-  num_samples: 50
   img_size: 512
-  raw_data_path: "/data/hui/UDA/crossMoDA2021/crossmoda_training/"
+  
+  preparation:
+  
+    raw_data_path: "/data/hui/UDA/crossMoDA2021/crossmoda_training/"
+    modes: ["train", "val"]
+    num_samples: #ramdomly sample 50 from target or source for training
+      train: 50
+      val: 10
   
   data:
     train_path: 
-      source: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/source_imgs.npy"  # Path to the source domain training data
-      target: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/target_imgs.npy"  # Path to the target domain training data
+      source: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/train/source_imgs.npy"  # Path to the source domain training data
+      target: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/train/target_imgs.npy"  # Path to the target domain training data
     val_path: 
-      source: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/source_imgs.npy"  # Path to the source domain validation data
-      target: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/target_imgs.npy"
+      source: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/val/source_imgs.npy"  # Path to the source domain validation data
+      target: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/val/target_imgs.npy"
   
     batch_size: 4                      # Batch size for training
     num_workers: 4                     # Number of workers for DataLoader
@@ -38,4 +44,17 @@ Translation:
     seed: 42                           # Random seed for reproducibility
     epochs: 2                        # Number of training epochs
     save_path: "./checkpoints"         # Directory to save model checkpoints
+  
+  
+  prediction:
+    k_means_clusters: 1
+    save_nii_dirpath: "/home/hln0895/DRL-STNet/crossMoDA2021/Translation/predcition/"
+    num_samples:
+      source: 20
+      target: 10
+    
+    
+    
+    
+    
 
