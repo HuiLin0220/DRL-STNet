@@ -58,6 +58,16 @@ If you find our work is useful in your research, please consider citing:
           │   │── source_selected_files.txt
           │   │── target_selected_files.txt
 	```
+ - After stage 2
+	```
+	FLARE/Translation/  
+          ├── predcition
+          │   ├── FLARE22_Tr_0001_0000.nii.gz
+          │   ├── FLARE22_Tr_0002_0000.nii.gz
+          │   ├── ...
+ 	  ├── i2i_exp
+  	  ├── train
+  	  ├── val
 		
 ## Instructions
 
