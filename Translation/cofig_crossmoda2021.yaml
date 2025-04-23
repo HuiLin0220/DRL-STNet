@@ -40,7 +40,7 @@ Translation:
     max_pixel_value: 1.0               # Maximum pixel value for normalization
 
   model:
-    name: "i2i_exp"                  # Name of the experiment
+    name: "translation_exp"                  # Name of the experiment
     seed: 42                           # Random seed for reproducibility
     epochs: 2                        # Number of training epochs
     save_path: "./checkpoints"         # Directory to save model checkpoints

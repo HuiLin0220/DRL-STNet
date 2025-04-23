@@ -119,7 +119,7 @@ class i2iSolver(nn.Module):
         plt.tight_layout()
         e='%03d'%epoch
         version = os.path.join(self.opts['experiment_name'] , "Translation", self.opts["Translation"]['model']['name'])
-        plt.savefig(f'{version}/i2i_train_visual/{e}_{time.time()}.png',dpi=200)
+        plt.savefig(f'{version}/translation_train_visual/{e}_{time.time()}.png',dpi=200)
         plt.close()
 
     def set_requires_grad(self, nets, requires_grad=False):
@@ -135,7 +135,7 @@ class i2iSolver(nn.Module):
             param_test.data = torch.lerp(param.data, param_test.data, beta)
 
     def save(self,  epoch):
-        model_name = os.path.join(self.opts['experiment_name'] , "Translation", self.opts["Translation"]['model']['name'], 'i2i_checkpoints', 'enc_%04d.pt' % (epoch + 1))
+        model_name = os.path.join(self.opts['experiment_name'] , "Translation", self.opts["Translation"]['model']['name'], 'translation_checkpoints', 'enc_%04d.pt' % (epoch + 1))
         torch.save({'enc_c': self.enc_c_ema.state_dict(), 'dec': self.dec_ema.state_dict(),
                     'enc_s_a': self.enc_s_a_ema.state_dict(),'enc_s_b': self.enc_s_b_ema.state_dict(),
                     'dis_a': self.dis_a.state_dict(), 'dis_b': self.dis_b.state_dict()}, model_name)
