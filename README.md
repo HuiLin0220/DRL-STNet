@@ -44,9 +44,9 @@ If you find our work is useful in your research, please consider citing:
 - After stage 0 and stage 1
 	```
 	FLARE/Translation/  
-          ├── i2i_exp
-          │   ├── i2i_checkpoints
-          │   ├── i2i_train_visual
+          ├── translation_exp
+          │   ├── translation_checkpoints
+          │   ├── translation_train_visual
           ├── train
           │   ├── source_imgs.npy
           │   │── target_imgs.npy
@@ -65,7 +65,7 @@ If you find our work is useful in your research, please consider citing:
           │   ├── FLARE22_Tr_0001_0000.nii.gz
           │   ├── FLARE22_Tr_0002_0000.nii.gz
           │   ├── ...
-          ├── i2i_exp
+          ├── translation_exp
           ├── train
           ├── val
 		
