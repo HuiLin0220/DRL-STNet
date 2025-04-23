@@ -6,8 +6,9 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from tqdm import tqdm
-from utils import load_config
+from utils import load_config, adaptive_normalize
 
+'''
 def adaptive_normalize(arr):
     """
     Normalizes the input array by clipping values to the 99.99th percentile
@@ -21,7 +22,7 @@ def adaptive_normalize(arr):
         max_v = PixelArr[int((len(PixelArr) - 1) * max_p + 0.5)]
         arr = np.clip(arr, 0, max_v) / max_v
     return arr
-
+'''
 
 def random_select_and_save(input_path, output_file, num_samples=50):
     """
@@ -138,39 +139,46 @@ def main():
     cfg = parse_args()
 
 
-    raw_data_path = cfg["Translation"]["raw_data_path"]
-    
+    raw_data_path = cfg["Translation"]["preparation"]["raw_data_path"]
+    modes = cfg["Translation"]["preparation"]["modes"]
     output_path =  os.path.join(cfg["experiment_name"], "Translation")
-    
-    num_samples = cfg["Translation"]["num_samples"]
+    num_samples_dict = cfg["Translation"]["preparation"]["num_samples"]
     img_size = cfg["Translation"]["img_size"]
     
     
     # Define source and target paths
     source_path = os.path.join(raw_data_path, "source")
     target_path = os.path.join(raw_data_path, "target")
+    
+    
+    output_root =  os.path.join(cfg["experiment_name"], "Translation")
 
-    # Define output file paths for selected files
-    source_output_file = os.path.join(output_path, "source_selected_files.txt")
-    target_output_file = os.path.join(output_path, "target_selected_files.txt")
-
-    # Randomly select and save files from source and target paths
-    source_file_list = random_select_and_save(source_path, source_output_file, num_samples)
-    target_file_list = random_select_and_save(target_path, target_output_file, num_samples)
-
-    # Process and save source files as A_imgs
-    A_imgs = process_files(source_file_list, source_path, img_size)
-    if A_imgs:
-        A_imgs = np.concatenate(A_imgs, axis=-1).transpose((2, 0, 1))
-        np.save(os.path.join(output_path, "source_imgs.npy"), A_imgs)
-        print(f"A_imgs saved to {os.path.join(output_path, 'source_imgs.npy')}")
-
-    # Process and save target files as B_imgs
-    B_imgs = process_files(target_file_list, target_path, img_size)
-    if B_imgs:
-        B_imgs = np.concatenate(B_imgs, axis=-1).transpose((2, 0, 1))
-        np.save(os.path.join(output_path, "target_imgs.npy"), B_imgs)
-        print(f"B_imgs saved to {os.path.join(output_path, 'target_imgs.npy')}")
+    for mode in modes:
+      print(f"\n========== Processing {mode.upper()} ==========")
+      mode_output = os.path.join(output_root, mode)
+      os.makedirs(mode_output, exist_ok=True)
+  
+      num_samples = num_samples_dict[mode]
+  
+      # Select and save file names
+      source_txt = os.path.join(mode_output, "source_selected_files.txt")
+      target_txt = os.path.join(mode_output, "target_selected_files.txt")
+      source_files = random_select_and_save(source_path, source_txt, num_samples)
+      target_files = random_select_and_save(target_path, target_txt, num_samples)
+  
+      # Process and save source .npy
+      A_imgs = process_files(source_files, source_path, img_size)
+      if A_imgs:
+          A_imgs = np.concatenate(A_imgs, axis=-1).transpose((2, 0, 1))  # [D, H, W]
+          np.save(os.path.join(mode_output, "source_imgs.npy"), A_imgs)
+          print(f"Saved source_imgs.npy to {mode_output}")
+  
+      # Process and save target .npy
+      B_imgs = process_files(target_files, target_path, img_size)
+      if B_imgs:
+          B_imgs = np.concatenate(B_imgs, axis=-1).transpose((2, 0, 1))
+          np.save(os.path.join(mode_output, "target_imgs.npy"), B_imgs)
+          print(f"Saved target_imgs.npy to {mode_output}")
 
 
 if __name__ == "__main__":

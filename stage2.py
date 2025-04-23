@@ -34,7 +34,7 @@ def main():
     prep_cfg = cfg["Translation"]["preparation"]
 
     # Model and clustering configuration
-    ckpt_epoch = cfg["Translation"]["model"].get("epoch", 40)
+    ckpt_epoch = cfg["Translation"]["model"].get("epochs", 40)
     ckpt_filename = f"enc_{ckpt_epoch:04d}.pt"
     ckpt_path = os.path.join(cfg['experiment_name'], "Translation", cfg["Translation"]['model']['name'], "i2i_checkpoints", ckpt_filename)
 
