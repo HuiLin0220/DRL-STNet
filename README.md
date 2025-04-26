@@ -54,7 +54,7 @@ If you find our work is useful in your research, please consider citing:
           │   │   │── source_selected_files.txt
           │   │   │── target_selected_files.txt
           │   ├── val/
-          │   │   │   ├── source_imgs.npy
+          │   │   ├── source_imgs.npy
           │   │   │── target_imgs.npy
           │   │   │── source_selected_files.txt
           │   │   │── target_selected_files.txt
