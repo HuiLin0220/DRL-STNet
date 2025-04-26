@@ -27,16 +27,16 @@ If you find our work is useful in your research, please consider citing:
 ## Folder Structures
 - The input for stage 0:
 	```
- 	FLARE/raw_data  
-          ├── source
+ 	FLARE/raw_data/  
+          ├── source/
           │   ├── FLARE22_Tr_0001_0000.nii.gz
           │   ├── FLARE22_Tr_0002_0000.nii.gz
           │   ├── ...
-          ├── source_labels
+          ├── source_labels/
           │   ├── FLARE22_Tr_0001.nii.gz
           │   ├── FLARE22_Tr_0002.nii.gz
           │   ├── ...
-          ├── target
+          ├── target/
           │   ├── amos_XXXX_0000.nii.gz
           │   ├── amos_XXXX_0000.nii.gz
           │   ├── ...
@@ -44,16 +44,16 @@ If you find our work is useful in your research, please consider citing:
 - After stage 0 and stage 1
 	```
 	FLARE/Translation/  
-          ├── translation_exp
+          ├── translation_exp/
           │   ├── translation_checkpoints
           │   ├── translation_train_visual
-          ├── translation_data
-          │   ├── train
+          ├── translation_data/
+          │   ├── train/
           │   │   ├── source_imgs.npy
           │   │   │── target_imgs.npy
           │   │   │── source_selected_files.txt
           │   │   │── target_selected_files.txt
-          │   ├── val
+          │   ├── val/
           │   │   │   ├── source_imgs.npy
           │   │   │── target_imgs.npy
           │   │   │── source_selected_files.txt
@@ -62,26 +62,26 @@ If you find our work is useful in your research, please consider citing:
  - After stage 2
 	```
 	FLARE/Translation/  
-          ├── predcition
+          ├── prediction/
           │   ├── FLARE22_Tr_0001_0000.nii.gz
           │   ├── FLARE22_Tr_0002_0000.nii.gz
           │   ├── ...
-          ├── translation_exp
-          ├── translation_data
-          ├── train
-          ├── val
+          ├── translation_exp/
+          ├── translation_data/
+ 	```
 		
 ## Instructions
 
-stage 0 preparing data for training i2i model:
+# stage 0 Prepare data for training the translation model
+Create your experiment_name folder (e.g., FLARE/), and place the raw_data inside it.
 ```       
 python "/home/hln0895/DRL-STNet/stage0.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
 ```
-stage 1: train i2i model
+# stage 1: train the translation model
 ```	
 python "/home/hln0895/DRL-STNet/stage1.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
 ```
-stage 2: generate fake target scans (MRI)
+# stage 2: generate fake target scans (MRI)
 ```	
 python "/home/hln0895/DRL-STNet/stage2.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
 ```
