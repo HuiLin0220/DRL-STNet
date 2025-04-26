@@ -2,7 +2,7 @@
 [![paper](https://img.shields.io/badge/arXiv-2409.18340-blue)](https://arxiv.org/abs/2409.18340)
  [![cite](https://img.shields.io/badge/cite-BibTex-yellow)](https://scholar.googleusercontent.com/scholar.bib?q=info:_WTBYxMIx-IJ:scholar.google.com/&output=citation&scisdr=ClEVFUEBEJ750VrYKyA:AFWwaeYAAAAAZ-beMyBvhn9GPawRgNF6OIXYJOY&scisig=AFWwaeYAAAAAZ-beM5qZ-hFUtE2RQAeeiZ-cNo0&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1) 
 
-# Introduction
+## Introduction
 This algorithm is for Task 3 in [FLARE Challenge](https://www.codabench.org/competitions/2296/), which was held at MICCAI 2024. We are ranked ${\textsf{\color{red}5th}}$ regarding the accuracy!
 
 
@@ -87,5 +87,5 @@ python "/home/hln0895/DRL-STNet/stage2.py" --config "/home/hln0895/DRL-STNet/Tra
 ```
 
 
-## Contact Us
+# Contact Us
 Feel free to contact me at huilin2023@u.northwestern.edu
