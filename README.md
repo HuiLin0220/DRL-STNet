@@ -27,7 +27,7 @@ If you find our work is useful in your research, please consider citing:
 ## Folder Structures
 - The input for stage 0:
 	```
- 	FLARE/  
+ 	FLARE/data  
           ├── source
           │   ├── FLARE22_Tr_0001_0000.nii.gz
           │   ├── FLARE22_Tr_0002_0000.nii.gz
