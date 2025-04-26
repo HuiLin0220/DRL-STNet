@@ -5,5 +5,5 @@ def mkdir(e, r, m, n):
         os.makedirs(p)
 
 def create_dirs(exp_name, model_name):
-    mkdir(exp_name, "Translation", model_name, 'i2i_train_visual')
-    mkdir(exp_name, "Translation", model_name, 'i2i_checkpoints')
+    mkdir(exp_name, "Translation", model_name, 'translation_train_visual')
+    mkdir(exp_name, "Translation", model_name, 'translation_checkpoints')

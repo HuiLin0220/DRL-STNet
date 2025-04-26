@@ -5,6 +5,7 @@ import numpy as np
 import random
 import cv2
 import yaml
+import os
 
 
 class I2IDataset(data.Dataset):
@@ -46,9 +47,14 @@ class I2IDataset(data.Dataset):
         Returns:
             tuple: A_imgs and B_imgs as NumPy arrays.
         """
-        data_type = 'train_path' if self.is_train else 'val_path'
-        A_imgs = np.load(self.cfg['Translation']['data'][data_type]['source'])
-        B_imgs = np.load(self.cfg['Translation']['data'][data_type]['target'])
+
+        
+        data_type = 'train' if self.is_train else 'val'
+ 
+        A_imgs = np.load(os.path.join(self.cfg['experiment_name'], "Translation", "translation_data", data_type, 'source_imgs.npy'))
+        B_imgs = np.load(os.path.join(self.cfg['experiment_name'], "Translation", "translation_data", data_type, 'target_imgs.npy'))
+        
+        
         return A_imgs, B_imgs
 
     def __getitem__(self, index):
