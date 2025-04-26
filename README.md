@@ -88,7 +88,7 @@ python "/home/hln0895/DRL-STNet/stage2.py" --config "path/to/your/config.yaml"
 ### stage 3: train a seg model using fake target scans (MRI)
 
 ```	
-python "/home/hln0895/DRL-STNet/stage3.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
+python "/home/hln0895/DRL-STNet/stage3.py" --config "path/to/your/config.yaml"
 ```
 
 ## Contact Us
