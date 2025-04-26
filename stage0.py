@@ -8,21 +8,7 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from utils import load_config, adaptive_normalize
 
-'''
-def adaptive_normalize(arr):
-    """
-    Normalizes the input array by clipping values to the 99.99th percentile
-    of non-zero elements and scaling to the range [0, 1].
-    """
-    max_p = 1 - 0.0001 * arr.shape[-1]
-    arr = arr.astype(np.float32)
-    PixelArr = arr[arr > 0]
-    if len(PixelArr) > 0:
-        PixelArr.sort()
-        max_v = PixelArr[int((len(PixelArr) - 1) * max_p + 0.5)]
-        arr = np.clip(arr, 0, max_v) / max_v
-    return arr
-'''
+
 
 def random_select_and_save(input_path, output_file, num_samples=50):
     """
@@ -137,9 +123,20 @@ def main():
     Main function to process NIfTI files.
     """
     cfg = parse_args()
+    
+    raw_data_path = os.path.join(cfg["experiment_name"], "raw_data")
 
-
-    raw_data_path = cfg["Translation"]["preparation"]["raw_data_path"]
+    # If the default path does not exist
+    if not os.path.exists(raw_data_path):
+        alt_raw_data_path = cfg["Translation"]["preparation"].get("raw_data_path", None)
+        
+        if alt_raw_data_path is None or not os.path.exists(alt_raw_data_path):
+            raise FileNotFoundError(
+                f"Neither '{raw_data_path}' nor the alternative 'raw_data_path' in config exist."
+            )
+        else:
+            raw_data_path = alt_raw_data_path
+    
     modes = cfg["Translation"]["preparation"]["modes"]
     output_path =  os.path.join(cfg["experiment_name"], "Translation")
     num_samples_dict = cfg["Translation"]["preparation"]["num_samples"]
@@ -151,7 +148,7 @@ def main():
     target_path = os.path.join(raw_data_path, "target")
     
     
-    output_root =  os.path.join(cfg["experiment_name"], "Translation")
+    output_root =  os.path.join(cfg["experiment_name"], "Translation", 'translation_data')
 
     for mode in modes:
       print(f"\n========== Processing {mode.upper()} ==========")

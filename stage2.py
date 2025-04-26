@@ -9,12 +9,15 @@ from sklearn.cluster import KMeans
 import torch.nn.functional as F
 from Translation.i2i_solver import i2iSolver
 from utils import load_config, adaptive_normalize
+import os
 
 
 # ------------------------- Image Preprocessing ------------------------- #
 def process(nii_path):
     """Load, normalize, and resize a NIfTI image."""
-    imgs = nib.load(nii_path).get_fdata().transpose((1, 0, 2))[::-1]
+
+    imgs = nib.load(nii_path).get_fdata()
+    imgs = imgs.transpose((1, 0, 2))[::-1]
     origin_shape = imgs.shape
     image_data = torch.from_numpy(imgs.copy()).unsqueeze(0).unsqueeze(0)
     image_data = F.interpolate(image_data, [512, 512, origin_shape[-1]], mode="trilinear").numpy()[0, 0]
@@ -36,17 +39,29 @@ def main():
     # Model and clustering configuration
     ckpt_epoch = cfg["Translation"]["model"].get("epochs", 40)
     ckpt_filename = f"enc_{ckpt_epoch:04d}.pt"
-    ckpt_path = os.path.join(cfg['experiment_name'], "Translation", cfg["Translation"]['model']['name'], "i2i_checkpoints", ckpt_filename)
+    ckpt_path = os.path.join(cfg['experiment_name'], "Translation", cfg["Translation"]['model']['name'], "translation_checkpoints", ckpt_filename)
 
     k_means_clusters = pred_cfg["k_means_clusters"]
 
     # Construct data paths
-    raw_data_path = prep_cfg["raw_data_path"]
+    raw_data_path = os.path.join(cfg["experiment_name"], "raw_data")
+
+    # If the default path does not exist
+    if not os.path.exists(raw_data_path):
+        alt_raw_data_path = cfg["Translation"]["preparation"].get("raw_data_path", None)
+        
+        if alt_raw_data_path is None or not os.path.exists(alt_raw_data_path):
+            raise FileNotFoundError(
+                f"Neither '{raw_data_path}' nor the alternative 'raw_data_path' in config exist."
+            )
+        else:
+            raw_data_path = alt_raw_data_path
+    
     source_dir = os.path.join(raw_data_path, "source")
     target_dir = os.path.join(raw_data_path, "target")
 
     # Output directory
-    save_dir = pred_cfg["save_nii_dirpath"]
+    save_dir = os.path.join(cfg['experiment_name'], "Translation", cfg["Translation"]['model']['name'], "prediction")  
     os.makedirs(save_dir, exist_ok=True)
 
     # Sample sizes for random selection
