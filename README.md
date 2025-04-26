@@ -72,16 +72,16 @@ If you find our work is useful in your research, please consider citing:
 		
 ## Instructions
 
-# stage 0 Prepare data for training the translation model
+### stage 0 Prepare data for training the translation model
 Create your experiment_name folder (e.g., FLARE/), and place the raw_data inside it.
 ```       
 python "/home/hln0895/DRL-STNet/stage0.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
 ```
-# stage 1: train the translation model
+### stage 1: train the translation model
 ```	
 python "/home/hln0895/DRL-STNet/stage1.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
 ```
-# stage 2: generate fake target scans (MRI)
+### stage 2: generate fake target scans (MRI)
 ```	
 python "/home/hln0895/DRL-STNet/stage2.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
 ```
