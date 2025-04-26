@@ -85,7 +85,11 @@ python "/home/hln0895/DRL-STNet/stage1.py" --config "/home/hln0895/DRL-STNet/Tra
 ```	
 python "/home/hln0895/DRL-STNet/stage2.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
 ```
+### stage 3: train a seg model using fake target scans (MRI)
 
+```	
+python "/home/hln0895/DRL-STNet/stage3.py" --config "/home/hln0895/DRL-STNet/Translation/cofig_crossmoda2021.yaml"
+```
 
 ## Contact Us
 Feel free to contact me at huilin2023@u.northwestern.edu
