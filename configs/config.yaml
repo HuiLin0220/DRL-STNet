@@ -1,0 +1,49 @@
+
+gpu:
+  device: 0  # GPU device ID (use -1 to force CPU computation)
+
+experiment_name: "FLARE"  # Name of the experiment; also used to build paths
+
+# Image translation configuration (i2i = image-to-image translation)
+Translation:
+  img_size: 512  # Image size after resizing (H, W)
+
+  preparation:
+    # raw_data_path: "/path/to/save/raw_data/" 
+    # Optional raw_data_path (commented out): fallback if auto path not found
+    modes: ["train", "val"]  # Modes for which datasets are prepared
+    num_samples:             # Number of samples to randomly select for each mode
+      train: 2                # Randomly sample 2 volumes for training
+      val: 2                  # Randomly sample 2 volumes for validation
+
+  data:
+    batch_size: 4             # Batch size for training DataLoader
+    num_workers: 4            # Number of worker threads for loading data
+    visual_interval: 100      # Interval (steps) to visualize GAN outputs during training
+
+  augmentation:
+    shift_limit: 0.1          # Max shift augmentation factor (fraction of size)
+    scale_limit: 0.1          # Max scaling augmentation factor
+    rotate_limit: 30          # Max rotation angle in degrees
+    vertical_flip_prob: 0.5   # Probability of applying vertical flip
+    horizontal_flip_prob: 0.5 # Probability of applying horizontal flip
+    mean: 0.5                 # Mean for image normalization
+    std: 0.5                  # Standard deviation for image normalization
+    max_pixel_value: 1.0      # Max pixel value after normalization (e.g., 1.0 for float32 images)
+
+  model:
+    name: "translation_exp"   # Internal experiment name for checkpoints and logs
+    seed: 42                  # Random seed for reproducibility
+    epochs: 2                 # Number of epochs to train
+    save_path: "./checkpoints" # Path to save model checkpoints
+
+  prediction:
+    k_means_clusters: 1       # Number of clusters for style features (KMeans)
+    # save_nii_dirpath: "/path/to/save/prediction/"  # Optional save path (commented out)
+    num_samples:              # Number of volumes to select for prediction
+      source: 2               # Select 2 source volumes for prediction
+      target: 2               # Select 2 target volumes for extracting style
+
+    
+    
+
