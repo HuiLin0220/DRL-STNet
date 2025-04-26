@@ -47,16 +47,17 @@ If you find our work is useful in your research, please consider citing:
           ├── translation_exp
           │   ├── translation_checkpoints
           │   ├── translation_train_visual
-          ├── train
-          │   ├── source_imgs.npy
-          │   │── target_imgs.npy
-          │   │── source_selected_files.txt
-          │   │── target_selected_files.txt
-          ├── val
-          │   ├── source_imgs.npy
-          │   │── target_imgs.npy
-          │   │── source_selected_files.txt
-          │   │── target_selected_files.txt
+          ├── translation_data
+          │   ├── train
+          │   │   ├── source_imgs.npy
+          │   │   │── target_imgs.npy
+          │   │   │── source_selected_files.txt
+          │   │   │── target_selected_files.txt
+          │   ├── val
+          │   │   │   ├── source_imgs.npy
+          │   │   │── target_imgs.npy
+          │   │   │── source_selected_files.txt
+          │   │   │── target_selected_files.txt
 	```
  - After stage 2
 	```
@@ -66,6 +67,7 @@ If you find our work is useful in your research, please consider citing:
           │   ├── FLARE22_Tr_0002_0000.nii.gz
           │   ├── ...
           ├── translation_exp
+          ├── translation_data
           ├── train
           ├── val
 		
